@@ -1,8 +1,8 @@
 package _go
 
 type BookMyShow struct {
-	rows, seats int
-	stree       []segNode2286
+	rows, seats   int
+	segmentedTree []segNode2286
 }
 
 type segNode2286 struct {
@@ -23,117 +23,117 @@ func Constructor(rows int, seats int) BookMyShow {
 	return obj
 }
 
-func (r *BookMyShow) build(idx, ldx, rdx int) {
+func (receiver *BookMyShow) build(idx, ldx, rdx int) {
 	if ldx == rdx {
-		r.stree[idx] = segNode2286{r.seats, r.seats}
+		receiver.segmentedTree[idx] = segNode2286{receiver.seats, receiver.seats}
 		return
 	}
 
 	mdx := (ldx + rdx) / 2
-	r.stree[idx] = segNode2286{r.seats, (rdx - ldx + 1) * r.seats}
+	receiver.segmentedTree[idx] = segNode2286{receiver.seats, (rdx - ldx + 1) * receiver.seats}
 
-	r.build(2*idx+1, ldx, mdx)
-	r.build(2*idx+2, mdx+1, rdx)
+	receiver.build(2*idx+1, ldx, mdx)
+	receiver.build(2*idx+2, mdx+1, rdx)
 }
 
-func (r *BookMyShow) queryMax(idx, ldx, rdx, k, maxRow int) []int {
+func (receiver *BookMyShow) queryMax(idx, ldx, rdx, k, maxRow int) []int {
 	if ldx > maxRow {
 		return []int{}
 	}
 
-	if r.stree[idx].max < k {
+	if receiver.segmentedTree[idx].max < k {
 		return []int{}
 	}
 
 	if ldx == rdx {
-		return []int{ldx, r.seats - r.stree[idx].max}
+		return []int{ldx, receiver.seats - receiver.segmentedTree[idx].max}
 	}
 
 	mdx := (ldx + rdx) / 2
-	result := r.queryMax(2*idx+1, ldx, mdx, k, maxRow)
+	result := receiver.queryMax(2*idx+1, ldx, mdx, k, maxRow)
 	if 0 != len(result) {
 		return result
 	}
 
-	return r.queryMax(2*idx+2, mdx+1, rdx, k, maxRow)
+	return receiver.queryMax(2*idx+2, mdx+1, rdx, k, maxRow)
 }
 
-func (r *BookMyShow) decreaseMax(idx, ldx, rdx, row, diff int) {
+func (receiver *BookMyShow) decreaseMax(idx, ldx, rdx, row, diff int) {
 	if ldx > row || rdx < row {
 		return
 	}
 
 	if ldx == rdx {
-		r.stree[idx].max -= diff
-		r.stree[idx].sum -= diff
+		receiver.segmentedTree[idx].max -= diff
+		receiver.segmentedTree[idx].sum -= diff
 
 		return
 	}
 
 	mdx := (ldx + rdx) / 2
-	r.stree[idx].sum -= diff
+	receiver.segmentedTree[idx].sum -= diff
 
-	r.decreaseMax(2*idx+1, ldx, mdx, row, diff)
-	r.decreaseMax(2*idx+2, mdx+1, rdx, row, diff)
+	receiver.decreaseMax(2*idx+1, ldx, mdx, row, diff)
+	receiver.decreaseMax(2*idx+2, mdx+1, rdx, row, diff)
 
-	r.stree[idx].max = max2286(r.stree[2*idx+1].max, r.stree[2*idx+2].max)
+	receiver.segmentedTree[idx].max = max2286(receiver.segmentedTree[2*idx+1].max, receiver.segmentedTree[2*idx+2].max)
 }
 
-func (r *BookMyShow) querySum(idx, ldx, rdx, maxRow int) int {
+func (receiver *BookMyShow) querySum(idx, ldx, rdx, maxRow int) int {
 	if ldx > maxRow {
 		return 0
 	}
 
 	if rdx <= maxRow {
-		return r.stree[idx].sum
+		return receiver.segmentedTree[idx].sum
 	}
 
 	mdx := (ldx + rdx) / 2
-	return r.querySum(2*idx+1, ldx, mdx, maxRow) + r.querySum(2*idx+2, mdx+1, rdx, maxRow)
+	return receiver.querySum(2*idx+1, ldx, mdx, maxRow) + receiver.querySum(2*idx+2, mdx+1, rdx, maxRow)
 }
 
-func (r *BookMyShow) decreaseSum(idx, ldx, rdx, diff, maxRow int) {
+func (receiver *BookMyShow) decreaseSum(idx, ldx, rdx, diff, maxRow int) {
 	if ldx > maxRow {
 		return
 	}
 
 	if ldx == rdx {
-		r.stree[idx].max -= diff
-		r.stree[idx].sum -= diff
+		receiver.segmentedTree[idx].max -= diff
+		receiver.segmentedTree[idx].sum -= diff
 
 		return
 	}
 
 	mdx := (ldx + rdx) / 2
-	r.stree[idx].sum -= diff
-	if mdx+1 > maxRow || r.stree[2*idx+1].sum >= diff {
-		r.decreaseSum(2*idx+1, ldx, mdx, diff, maxRow)
+	receiver.segmentedTree[idx].sum -= diff
+	if mdx+1 > maxRow || receiver.segmentedTree[2*idx+1].sum >= diff {
+		receiver.decreaseSum(2*idx+1, ldx, mdx, diff, maxRow)
 	} else {
-		diff -= r.stree[2*idx+1].sum
+		diff -= receiver.segmentedTree[2*idx+1].sum
 
-		r.decreaseSum(2*idx+1, ldx, mdx, r.stree[2*idx+1].sum, maxRow)
-		r.decreaseSum(2*idx+2, mdx+1, rdx, diff, maxRow)
+		receiver.decreaseSum(2*idx+1, ldx, mdx, receiver.segmentedTree[2*idx+1].sum, maxRow)
+		receiver.decreaseSum(2*idx+2, mdx+1, rdx, diff, maxRow)
 	}
 
-	r.stree[idx].max = max2286(r.stree[2*idx+1].max, r.stree[2*idx+2].max)
+	receiver.segmentedTree[idx].max = max2286(receiver.segmentedTree[2*idx+1].max, receiver.segmentedTree[2*idx+2].max)
 }
 
-func (r *BookMyShow) Gather(k int, maxRow int) []int {
-	result := r.queryMax(0, 0, r.rows-1, k, maxRow)
+func (receiver *BookMyShow) Gather(k int, maxRow int) []int {
+	result := receiver.queryMax(0, 0, receiver.rows-1, k, maxRow)
 
 	if 0 != len(result) {
-		r.decreaseMax(0, 0, r.rows-1, result[0], k)
+		receiver.decreaseMax(0, 0, receiver.rows-1, result[0], k)
 	}
 
 	return result
 }
 
-func (r *BookMyShow) Scatter(k int, maxRow int) bool {
-	cnt := r.querySum(0, 0, r.rows-1, maxRow)
+func (receiver *BookMyShow) Scatter(k int, maxRow int) bool {
+	cnt := receiver.querySum(0, 0, receiver.rows-1, maxRow)
 
 	result := cnt >= k
 	if result {
-		r.decreaseSum(0, 0, r.rows-1, k, maxRow)
+		receiver.decreaseSum(0, 0, receiver.rows-1, k, maxRow)
 	}
 
 	return result
