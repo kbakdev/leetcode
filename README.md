@@ -7,6 +7,7 @@ LeetCode
 | 8    | [String to Integer (atoi)](https://leetcode.com/problems/string-to-integer-atoi/)                               | [Go](./go/0008.go)    | Medium     |
 | 29   | [Divide Two Integers](https://leetcode.com/problems/divide-two-integers/)                                       | [Go](./go/0029.go)    | Medium     |
 | 724  | [Find Pivot Index](https://leetcode.com/problems/find-pivot-index/)                                             | [Go](./go/0724.go)    | Easy       |
+| 1393 | [Capital Gain/Loss](https://leetcode.com/problems/capital-gainloss/)                                            | [SQL](./sql/1393.sql) | Medium     |
 | 1480 | [Running Sum of 1d Array](https://leetcode.com/problems/running-sum-of-1d-array/)                               | [Go](./go/1480.go)    | Easy       |
 | 1622 | [Fancy Sequence](https://leetcode.com/problems/fancy-sequence/)                                                 | [Go](./go/1622.go)    | Hard       |
 | 1704 | [Determine if String Halves are Alike](https://leetcode.com/problems/determine-if-string-halves-are-alike/)     | [Go](./go/1704.go)    | Easy       |
