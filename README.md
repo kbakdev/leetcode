@@ -8,6 +8,7 @@ LeetCode
 | 29   | [Divide Two Integers](https://leetcode.com/problems/divide-two-integers/)                                                                         | [Go](./go/0029.go)    | Medium     |
 | 724  | [Find Pivot Index](https://leetcode.com/problems/find-pivot-index/)                                                                               | [Go](./go/0724.go)    | Easy       |
 | 1020 | [Number of Enclaves](https://leetcode.com/problems/number-of-enclaves)                                                                            | [Go](./go/1020.go)    | Medium     |
+| 1378 | [Replace Employee ID With The Unique Identifier](https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier/)                   | [SQL](./sql/1378.sql) | Easy       |
 | 1393 | [Capital Gain/Loss](https://leetcode.com/problems/capital-gainloss/)                                                                              | [SQL](./sql/1393.sql) | Medium     |
 | 1480 | [Running Sum of 1d Array](https://leetcode.com/problems/running-sum-of-1d-array/)                                                                 | [Go](./go/1480.go)    | Easy       |
 | 1622 | [Fancy Sequence](https://leetcode.com/problems/fancy-sequence/)                                                                                   | [Go](./go/1622.go)    | Hard       |
