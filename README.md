@@ -12,6 +12,7 @@ LeetCode
 | 1393 | [Capital Gain/Loss](https://leetcode.com/problems/capital-gainloss/)                                                                              | [SQL](./sql/1393.sql) | Medium     |
 | 1480 | [Running Sum of 1d Array](https://leetcode.com/problems/running-sum-of-1d-array/)                                                                 | [Go](./go/1480.go)    | Easy       |
 | 1622 | [Fancy Sequence](https://leetcode.com/problems/fancy-sequence/)                                                                                   | [Go](./go/1622.go)    | Hard       |
+| 1683 | [Invalid Tweets](https://leetcode.com/problems/invalid-tweets/)                                                                                   | [SQL](./sql/1683.sql) | Easy       |
 | 1689 | [Partitioning Into Minimum Number Of Deci-Binary Numbers](https://leetcode.com/problems/partitioning-into-minimum-number-of-deci-binary-numbers/) | [Go](./go/1689.go)    | Medium     |
 | 1693 | [Daily Leads and Partners](https://leetcode.com/problems/daily-leads-and-partners/)                                                               | [SQL](./sql/1693.sql) | Easy       |
 | 1704 | [Determine if String Halves are Alike](https://leetcode.com/problems/determine-if-string-halves-are-alike/)                                       | [Go](./go/1704.go)    | Easy       |
